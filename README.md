@@ -6,36 +6,35 @@
 
 Welcome to the source code repository for my personal website and blog! This site is built using the static site generator [Hugo](https://gohugo.io/) and is a space where I share my learning experience.
 
-Beyond the content itself, this project also serves as a practical learning ground for implementing DevOps principles and building an automated deployment pipeline.
+Beyond the content itself, this project also serves as a practical learning ground for implementing DevOps principles. The entire server infrastructure for this blog is managed as code.
 
 ## About This Site
 
 *   **Content:** Blog posts, articles, and pages written in Markdown.
 *   **Static Site Generator:** Hugo
-*   **Deployment:** This site is automatically built and deployed to a self-managed Azure Virtual Machine running Nginx, served securely over HTTPS.
+*   **Deployment:** This site is automatically built and deployed to a self-managed Azure Virtual Machine. The server environment is configured entirely with Ansible and deployment is triggered via a `git push` to a custom hook.
 
-## DevOps & CI/CD Demonstration
+## DevOps & Infrastructure as Code
 
-The real magic behind this site (from a technical perspective) is its automated deployment setup! I've documented the entire CI/CD pipeline, server configuration, Nginx setup, and custom Git hooks in a separate repository dedicated to showcasing these DevOps practices.
+The real magic behind this site (from a technical perspective) is its **fully automated server setup and deployment pipeline**. I've codified the entire server configuration into a reusable **Ansible Role** in a separate repository.
 
-👉 **[View Detailed CI/CD Setup & Configuration Files](https://github.com/wusshit/my-hugo-vps-deploy-setup.git)** 👈
+👉 **[View the Ansible Role for this Server's Configuration](https://github.com/wusshit/my-hugo-vps-deploy-setup.git)** 👈
 
-This "configuration demo" repository includes:
-*   The exact `post-receive` Git hook script used for automation.
-*   The Nginx server block configuration (for HTTP and HTTPS).
-*   Notes on the Azure VM setup and other server-side configurations.
-*   A detailed explanation of the deployment workflow.
+That repository provides a complete "Infrastructure as Code" solution that:
+*   Uses an Ansible playbook to configure a fresh Ubuntu VM from scratch.
+*   Installs and configures Nginx, Hugo, and Certbot.
+*   Automates HTTPS setup with Let's Encrypt.
+*   Creates the server-side `post-receive` Git hook used for the CI/CD pipeline.
 
-This separation helps keep this repository focused on the site's content and the other repository focused on the operational infrastructure.
+This separation helps keep this repository focused on the site's **content**, while the other repository handles the **operational infrastructure**.
 
 ## Technologies Used (Site Content - This Repo)
 
 *   **Static Site Generation:** Hugo
 *   **Content Management:** Markdown, Git
 *   **Version Control:** Git & GitHub
-*   **HTTPS/SSL:** Let's Encrypt
 
-*(For technologies related to deployment, server, and CI/CD, please see the [CI/CD Setup & Configuration Repository](https://github.com/wusshit/my-hugo-vps-deploy-setup.git)*
+*(For technologies related to deployment, server, and CI/CD, such as **Ansible, Nginx, and Let's Encrypt**, please see the [Server Configuration Repository](https://github.com/wusshit/my-hugo-vps-deploy-setup.git).)*
 
 ## Local Development
 
@@ -47,7 +46,7 @@ To run or contribute to the content of this site locally:
     ```
 2.  Navigate into the project directory:
     ```bash
-    cd [Your-Actual-Hugo-Site-Repo-Name]
+    cd My-Blog
     ```
 3.  Ensure you have [Hugo (Extended version)](https://gohugo.io/installation/) installed.
 4.  If the theme is managed as a Git submodule:
@@ -62,15 +61,17 @@ To run or contribute to the content of this site locally:
 
 ## How to Deploy (Overview)
 
-While the detailed scripts are in the linked configuration repository, the deployment for *this* site is triggered via a `git push` to a specific remote on my Azure VM. The server then automatically builds and deploys the latest version.
+The server that hosts this site was configured using the linked Ansible repository. That setup created a custom Git hook for deployment.
+
+Deployment of *this site's content* is triggered via a `git push` to a specific remote on my Azure VM. The server then automatically builds and deploys the latest version.
 
 1.  Commit local changes to this repository.
 2.  Push to `origin` (GitHub).
-3.  Push to the `vps-deploy` remote to trigger the live deployment via `ssh` 
+3.  Push to the `vps-deploy` remote to trigger the live deployment.
 
 ## Future Plans
 
 I plan to continue developing both the content of this blog and enhancing its underlying infrastructure:
 
-*   Adding more articles about my understanding and learning experience in my practical exploration
-*   Further exploring DevOps tools for automation, configuration management, and containerization. *(Refer to the [CI/CD Setup & Configuration Repository](https://github.com/wusshit/my-hugo-vps-deploy-setup.git) for more specific infrastructure plans.)*
+*   Adding more articles about my understanding and learning experience in my practical exploration.
+*   Further exploring DevOps tools like Docker to containerize the application and build process. *(Refer to the [Server Configuration Repository](https://github.com/wusshit/my-hugo-vps-deploy-setup.git) for more specific infrastructure plans.)*
