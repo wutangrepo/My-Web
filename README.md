@@ -6,6 +6,7 @@ My-Web is a Hugo-powered static website. This repository contains the site conte
 - Static site generator: [Hugo](https://gohugo.io/) (extended)
 - Configuration: `hugo.yaml`
 - Theme: managed as a Git submodule in `themes/`
+- Server provisioning (Ansible role): [my-hugo-vps-deploy-setup](https://github.com/wutangrepo/my-hugo-vps-deploy-setup)
 
 ## Quick start
 
@@ -92,6 +93,10 @@ If you provision your server with Ansible, ensure:
 - `DEPLOY_PATH` exists and is owned by the deploy user (group often `www-data`)
 - Nginx’s server block `root` points to `DEPLOY_PATH`
 - TLS (Let’s Encrypt) is configured for HTTPS
+
+## Related repositories
+
+- Ansible role for provisioning and deploy automation: [my-hugo-vps-deploy-setup](https://github.com/wutangrepo/my-hugo-vps-deploy-setup)
 
 ## Repository layout
 
