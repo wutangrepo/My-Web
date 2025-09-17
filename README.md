@@ -115,7 +115,3 @@ If you provision your server with Ansible, ensure:
   - Ensure the server’s `~/.ssh/authorized_keys` contains the public key that matches `DEPLOY_KEY`
 - Host key verification failed
   - The workflow adds the host key via `ssh-keyscan`. Confirm `DEPLOY_HOST` and `DEPLOY_PORT` are correct.
-
-## License
-
-Specify your preferred license here (e.g., MIT, Apache-2.0), and include a `LICENSE` file if applicable.
