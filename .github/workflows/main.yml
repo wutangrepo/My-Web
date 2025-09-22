@@ -25,7 +25,7 @@ jobs:
           extended: true
 
       - name: build
-        run: hogo --minify
+        run: hugo --minify
 
       - name: SSH agent
         uses: webfactory/ssh-agent@v0.9.0
@@ -38,4 +38,4 @@ jobs:
           ssh-keyscan -p "${{ secrets.DEPLOY_PORT }}" -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
       - name: deploy via rsync
-        run: rsync -az --delete -e "ssh -p {{ secrets.DEPLOY_PORT }}" public/ "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}/"
+        run: rsync -az --delete -e "ssh -p ${{ secrets.DEPLOY_PORT }}" public/ "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}/"
