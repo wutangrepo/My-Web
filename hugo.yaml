@@ -1,4 +1,4 @@
-baseURL: "http://wuweb.westeurope.cloudapp.azure.com/"
+baseURL: "https://wuweb.westeurope.cloudapp.azure.com/"
 languageCode: "en-us"
 title: "Hugo Profile"
 theme: hugo-profile

@@ -1,6 +1,6 @@
 # My-Web — Hugo Site
 
-My-Web is a Hugo-powered static website. This repository contains the site content, configuration, and theme as a Git submodule. Builds and deployments are automated with GitHub Actions and published to a remote server via `rsync` over SSH.
+My-Web Hugo-powered static website. This repository contains the site content, configuration, and theme as a Git submodule. Builds and deployments are automated with GitHub Actions and published to a remote server via `rsync` over SSH.
 
 - Live site: https://wuweb.westeurope.cloudapp.azure.com/
 - Static site generator: [Hugo](https://gohugo.io/) (extended)
